@@ -1,0 +1,369 @@
+:root {
+    --primary: #096d45;
+    /* navbars */
+    --secondary: #bafb92;
+    /* background page, texts  , iconos. */
+    --tertiary: #153F85;
+    /* textos, background de iconos, titles, botones. */
+    --quaternary: #fcf8d6;
+    /* capaz background */
+    --quinary: #0c234c;
+    /* hover de botones */
+    --senary: #12a94c;
+    /* hover de botones */
+    --text: black;
+    /* textos*/
+    --danger: #D9534F;
+    /* Errores */
+    --accent: #F28C28;
+    /* alertas */
+    --success: #0d9514;
+    /* Confirmaciones, reciclaje exitoso */
+    --warning: #F4C542;
+    /* Advertencias o residuos pendientes */
+}
+
+.bodyLog, .bodyReg {
+    background-image: url(../images/background-regylog.png);
+    background-size: cover;
+    
+
+}
+
+/* ----- REGISTROS ------- */
+
+
+.form{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+    width: 30%;
+    height: 550px;
+    min-width: 280px;
+    max-width: 400px;
+    padding: 40px 30px;
+    margin-left: 5%;
+}
+
+.title {
+    text-align: left;
+    margin-top: 20px;
+    margin-left: 14%;
+    margin-bottom: 20px;
+    color: var(--primary);
+    font-size: 45px;
+    font-weight: bold;
+
+
+}
+
+.label{
+    align-self: center;
+    color: var(--primary);
+    font-size: 20px;
+    font-family:'Times New Roman', Times, serif;
+    margin-top: 10px;
+    text-align: center;    
+}
+
+.input{
+    box-sizing: border-box;
+    border-radius: 30px;
+    border: 1px solid var(--primary);
+    width: 100%;
+    max-width: 200px;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.btn{
+    background-color: var(--primary);
+    color: var(--quaternary);
+    font-size: 20px;
+    font-family:'Times New Roman', Times, serif;
+    width: 160px;
+    height: 40px;
+    border-radius: 30px;
+    border: 1px solid var(--primary);
+    box-shadow: 0px 0px 10px 2px var(--primary);
+    margin-top: 40px;
+    transition: all 0.8s ease-in-out;
+    cursor: pointer;
+
+}
+
+.btn:hover{
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+}
+
+.btn-volver{
+    display: inline-block;
+    background-color: var(--primary);
+    color: var(--quaternary);
+    font-size: 16px;
+    font-family:'Times New Roman', Times, serif;
+    padding: 8px 20px;
+    border-radius: 30px;
+    border: 1px solid var(--primary);
+    box-shadow: 0px 0px 10px 2px var(--primary);
+    text-decoration: none;
+    transition: all 0.8s ease-in-out;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.btn-volver:hover{
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+}
+
+.btn-nuevo{
+    display: inline-block;
+    background-color: var(--success);
+    color: var(--quaternary);
+    font-size: 16px;
+    font-family:'Times New Roman', Times, serif;
+    padding: 8px 20px;
+    border-radius: 30px;
+    border: 1px solid var(--success);
+    box-shadow: 0px 0px 10px 2px var(--success);
+    text-decoration: none;
+    transition: all 0.8s ease-in-out;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.btn-nuevo:hover{
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+}
+
+.btn-accion{
+    font-size: 14px;
+    font-family:'Times New Roman', Times, serif;
+    padding: 5px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-editar{
+    background-color: var(--primary);
+    color: var(--quaternary);
+    border: 1px solid var(--primary);
+}
+
+.btn-eliminar{
+    background-color: var(--danger);
+    color: var(--quaternary);
+    border: 1px solid var(--danger);
+}
+
+.btn-editar:hover,
+.btn-eliminar:hover{
+    transform: scale(1.08);
+    transition: all 0.3s ease-in-out;
+}
+
+.text{
+    color: var(--primary);
+    font-size: 20px;
+    margin-top: 30px;
+    text-align: left;
+    margin-left: 10%;
+}
+
+.link{
+
+    color: var(--success);
+    font-size: 20px;
+    text-decoration: none;
+    font-family:'Times New Roman', Times, serif;
+}
+
+
+/* ----- LOGIN ----- */
+
+.titleLog{
+    text-align: left;
+    margin-left: 12%;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: var(--primary);
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.formLog{
+    display: flex;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5px;
+        width: 30%;
+        height: 550px;
+        min-width: 280px;
+        max-width: 400px;
+        padding: 40px 30px;
+        margin-left: 5%;
+        font-size: 20px;
+        color: var(--primary);
+}
+
+.inputLog{
+    
+        border-radius: 30px;
+        border: 1px solid var(--primary);
+        width: 100%;
+        max-width: 200px;
+        height: 30px;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        font-size: 15px;
+        text-align: center;
+    
+}
+
+
+.btnLog{
+    background-color: var(--primary);
+    color: var(--quaternary);
+    font-size: 20px;
+    font-family:'Times New Roman', Times, serif;
+    width: 160px;
+    height: 40px;
+    border-radius: 30px;
+    border: 1px solid var(--primary);
+    box-shadow: 0px 0px 10px 2px var(--primary);
+    margin-top: 20px;
+    transition: all 0.8s ease-in-out;
+    cursor: pointer;
+}
+
+.btnLog:hover{
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+}
+
+.textLog{
+    color: var(--primary);
+    font-size: 20px;
+    text-align: left;
+    margin-left: 15%;
+}
+    
+ 
+
+
+/* --- MENU REGISTROS --- */
+
+.header-menu{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 30px;
+    grid-template-columns: 2fr auto 2fr;
+            /* 3 columnas: vacía / título / botón */
+}
+
+.menu{
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin-top: 20px;
+    padding: 40px 30px;
+}
+
+.bloque-menu{
+    background-color: var(--secondary);
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px 2px var(--primary);
+    padding: 20px;
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.8s ease-in-out;
+}
+
+.bloque-menu:hover{
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+}
+
+.text-menu{
+    color: var(--primary);
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.text-menu2{
+    color: var(--primary);
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.titleMenu{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: var(--primary);
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.registros{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: var(--primary);
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}
+
+.text-btn{
+    text-align: center;
+    color: var(--quaternary);
+    text-decoration: none;
+    font-size: 15px;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.btn-logout {
+    background-color: var(--primary);
+    font-family:'Times New Roman', Times, serif;
+    text-align: center;
+    width: 105px;
+    height: 35px;
+    border-radius: 30px;
+    border: 1px solid var(--primary);
+    box-shadow: 0px 0px 10px 2px var(--primary);
+    margin-top: 15px;
+    transition: all 0.8s ease-in-out;
+    cursor: pointer;   
+    justify-self: end;
+}
+
+.btn-logout:hover{
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Registrar centro de acopio</title>
+</head>
+<body>
+    <h2>Registrar centro de acopio</h2>
+
+    <form id="formCentro" method="POST" action="">
+        <label>RUT del centro de acopio:</label><br>
+        <input type="text" id="RUTdes" name="RUTdes" maxlength="12"><br><br>
+
+        <label>Nombre:</label><br>
+        <input type="text" id="nomDes" name="nomDes" maxlength="50"><br><br>
+
+        <label>Capacidad:</label><br>
+        <input type="text" id="capDes" name="capDes" maxlength="10"><br><br>
+
+        <label>Hora de apertura:</label><br>
+        <input type="time" id="horAperDes" name="horAperDes"><br><br>
+
+        <label>Hora de cierre:</label><br>
+        <input type="time" id="horCierDes" name="horCierDes"><br><br>
+
+        <label>Zona:</label><br>
+        <input type="text" id="zonaDes" name="zonaDes" maxlength="30"><br><br>
+
+        <button type="submit">Registrar</button>
+    </form>
+
+
+    <script src="/SiGeRuCSS+/ajax/centro/registroCentro.js"></script>
+</body>
+</html>
