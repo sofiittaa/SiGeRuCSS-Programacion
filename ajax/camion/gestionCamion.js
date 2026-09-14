@@ -1,5 +1,84 @@
 document.addEventListener("click", async (e) => {
 
+    if (e.target.id === "btnNuevoCamion") {
+        const { value: formValues } = await Swal.fire({
+            title: 'Registrar nuevo camión',
+            color: '#096d45',
+            html:
+                `<input id="swal-matricula" class="swal2-input" placeholder="Matrícula">` +
+                `<input id="swal-capacidad" class="swal2-input" placeholder="Capacidad">`,
+            focusConfirm: false,
+            showCancelButton: true,
+            confirmButtonText: 'Registrar',
+            cancelButtonText: 'Cancelar',
+            preConfirm: () => {
+                const matriculaInput = document.getElementById('swal-matricula').value.trim();
+                const capacidad = document.getElementById('swal-capacidad').value.trim();
+
+                if (matriculaInput === '' || capacidad === '') {
+                    Swal.showValidationMessage('Completa todos los campos');
+                    return false;
+                }
+
+                if (!/^[A-Za-z]{3}\s?\d{4}$/.test(matriculaInput)) {
+                    Swal.showValidationMessage('La matricula debe tener 3 letras y 4 numeros (ej: ABH 5149)');
+                    return false;
+                }
+
+                if (isNaN(capacidad) || Number(capacidad) <= 0) {
+                    Swal.showValidationMessage('La capacidad debe ser un número mayor a 0');
+                    return false;
+                }
+
+                const matricula = matriculaInput.replace(/\s/g, '').toUpperCase();
+
+                return { matricula, capacidad };
+            }
+        });
+
+        if (!formValues) return;
+
+        try {
+            const formData = new FormData();
+            formData.append("accion", "camion.crear");
+            formData.append("matricula", formValues.matricula);
+            formData.append("capacidad", formValues.capacidad);
+
+            const resp = await fetch("../../backend/APIS/apiGestion.php", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = JSON.parse(await resp.text());
+
+            if (data.exito) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: 'Camión registrado correctamente',
+                    timer: 1500,
+                    color: '#096d45',
+                    showConfirmButton: false,
+                }).then(() => window.location.reload());
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.error || 'No se pudo registrar',
+                    color: '#096d45',
+                });
+            }
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error de conexion',
+                color: '#096d45',
+            });
+            console.log(error);
+        }
+    }
+
     if (e.target.classList.contains("btn-eliminar")) {
         const matricula = e.target.dataset.matricula;
 
@@ -17,17 +96,17 @@ document.addEventListener("click", async (e) => {
 
         try {
             const formData = new FormData();
-            formData.append("accion", "borrar");
+            formData.append("accion", "camion.borrar");
             formData.append("matricula", matricula);
 
-            const resp = await fetch("/SiGeRuCSS+/components/APIS/apiCamion.php", {
+            const resp = await fetch("../../backend/APIS/apiGestion.php", {
                 method: "POST",
                 body: formData
             });
 
             const data = JSON.parse(await resp.text());
 
-            if (data.ok) {
+            if (data.exito) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Eliminado',
@@ -90,18 +169,18 @@ document.addEventListener("click", async (e) => {
 
         try {
             const formData = new FormData();
-            formData.append("accion", "modificar");
+            formData.append("accion", "camion.actualizar");
             formData.append("matricula", matricula);
             formData.append("capacidad", formValues.capacidad);
 
-            const resp = await fetch("/SiGeRuCSS+/components/APIS/apiCamion.php", {
+            const resp = await fetch("../../backend/APIS/apiGestion.php", {
                 method: "POST",
                 body: formData
             });
 
             const data = JSON.parse(await resp.text());
 
-            if (data.ok) {
+            if (data.exito) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Éxito',

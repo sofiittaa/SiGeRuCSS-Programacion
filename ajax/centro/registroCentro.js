@@ -82,9 +82,9 @@ document.getElementById("formCentro").addEventListener("submit", async (e) => {
 
     try {
         const formData = new FormData(e.target);
-        formData.append("accion", "crear");
+        formData.append("accion", "centro.crear");
 
-        const resp = await fetch("/SiGeRuCSS+/components/APIS/apiCentro.php", ({
+        const resp = await fetch("../../backend/APIS/apiGestion.php", ({
             method: "POST",
             body: formData
         }));
@@ -93,7 +93,7 @@ document.getElementById("formCentro").addEventListener("submit", async (e) => {
         console.log(texto);
         const data = JSON.parse(texto);
 
-        if (data.ok) {
+        if (data.exito) {
             e.target.reset();
             Swal.fire({
                 icon: 'success',
@@ -105,7 +105,7 @@ document.getElementById("formCentro").addEventListener("submit", async (e) => {
             });
 
             setTimeout(() => {
-                window.location.href = "/SiGeRuCSS+/components/vista/admin/panelAdmin.html";
+                window.location.href = "../admin/panelAdmin.php";
             }, 2000);
         } else {
             Swal.fire({

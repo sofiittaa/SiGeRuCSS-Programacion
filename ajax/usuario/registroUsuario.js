@@ -47,9 +47,9 @@ document.getElementById("formUsuario").addEventListener("submit", async (e) => {
 
     try {
         const formData = new FormData(e.target);
-        formData.append("accion", "crear");
+        formData.append("accion", "usuario.crear");
 
-        const resp = await fetch("/SiGeRuCSS+/components/APIS/apiUsuario.php", ({
+        const resp = await fetch("../../backend/APIS/apiUsuario.php", ({
             method: "POST",
             body: formData
         }));
@@ -58,7 +58,7 @@ document.getElementById("formUsuario").addEventListener("submit", async (e) => {
         console.log(texto);
         const data = JSON.parse(texto)
 
-        if (data.ok) {
+        if (data.exito) {
             e.target.reset();
             Swal.fire({
                 icon: 'success',
@@ -70,7 +70,7 @@ document.getElementById("formUsuario").addEventListener("submit", async (e) => {
             });
 
             setTimeout(() => {
-                window.location.href = "/SiGeRuCSS+/components/vista/usuarioVista/loginVista.html";
+                window.location.href = "../usuarioVista/loginVista.html";
             }, 1500);
         } else {
             Swal.fire({

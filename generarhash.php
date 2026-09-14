@@ -1,6 +1,6 @@
 <?php
 
-$contrasena = '0668aDm'; // 
+$contrasena = ''; 
 
 $hash = password_hash($contrasena, PASSWORD_DEFAULT);
 

@@ -81,9 +81,9 @@ document.getElementById("formEmpleado").addEventListener("submit", async (e) => 
 
     try {
         const formData = new FormData(e.target);
-        formData.append("accion", "crearEmpleado");
+        formData.append("accion", "empleado.crear");
 
-        const resp = await fetch("/SiGeRuCSS+/components/APIS/apiUsuario.php", ({
+        const resp = await fetch("../../backend/APIS/apiUsuario.php", ({
             method: "POST",
             body: formData
         }));
@@ -92,7 +92,7 @@ document.getElementById("formEmpleado").addEventListener("submit", async (e) => 
         console.log(texto);
         const data = JSON.parse(texto);
 
-        if (data.ok) {
+        if (data.exito) {
             e.target.reset();
             Swal.fire({
                 icon: 'success',
@@ -104,7 +104,7 @@ document.getElementById("formEmpleado").addEventListener("submit", async (e) => 
             });
 
             setTimeout(() => {
-                window.location.href = "/SiGeRuCSS+/components/vista/empleadoVista/listarEmpVista.php";
+                window.location.href = "../empleadoVista/listarEmpVista.php";
             }, 1500);
         } else {
             Swal.fire({

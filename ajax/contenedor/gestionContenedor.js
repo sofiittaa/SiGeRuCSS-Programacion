@@ -1,5 +1,82 @@
 document.addEventListener("click", async (e) => {
 
+    if (e.target.id === "btnNuevoContenedor") {
+        const { value: formValues } = await Swal.fire({
+            title: 'Registrar nuevo contenedor',
+            color: '#096d45',
+            html:
+                `<input id="swal-zona" class="swal2-input" placeholder="Zona">` +
+                `<input id="swal-capacidad" class="swal2-input" placeholder="Capacidad">`,
+            focusConfirm: false,
+            showCancelButton: true,
+            confirmButtonText: 'Registrar',
+            cancelButtonText: 'Cancelar',
+            preConfirm: () => {
+                const zona = document.getElementById('swal-zona').value.trim();
+                const capacidad = document.getElementById('swal-capacidad').value.trim();
+
+                if (zona === '' || capacidad === '') {
+                    Swal.showValidationMessage('Completa todos los campos');
+                    return false;
+                }
+
+                if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(zona)) {
+                    Swal.showValidationMessage('Debes ingresar letras en la zona del contenedor');
+                    return false;
+                }
+
+                if (isNaN(capacidad) || Number(capacidad) <= 0) {
+                    Swal.showValidationMessage('La capacidad debe ser un número mayor a 0');
+                    return false;
+                }
+
+                return { zona, capacidad };
+            }
+        });
+
+        if (!formValues) return;
+
+        try {
+            const formData = new FormData();
+            formData.append("accion", "contenedor.crear");
+            formData.append("zona", formValues.zona);
+            formData.append("capacidad", formValues.capacidad);
+
+            const resp = await fetch("../../backend/APIS/apiGestion.php", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = JSON.parse(await resp.text());
+
+            if (data.exito) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Éxito',
+                    text: 'Contenedor registrado correctamente',
+                    timer: 1500,
+                    color: '#096d45',
+                    showConfirmButton: false,
+                }).then(() => window.location.reload());
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.error || 'No se pudo registrar',
+                    color: '#096d45',
+                });
+            }
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error de conexion',
+                color: '#096d45',
+            });
+            console.log(error);
+        }
+    }
+
     if (e.target.classList.contains("btn-eliminar")) {
         const idCont = e.target.dataset.idcont;
 
@@ -17,17 +94,17 @@ document.addEventListener("click", async (e) => {
 
         try {
             const formData = new FormData();
-            formData.append("accion", "borrar");
+            formData.append("accion", "contenedor.borrar");
             formData.append("idCont", idCont);
 
-            const resp = await fetch("/SiGeRuCSS+/components/APIS/apiContenedor.php", {
+            const resp = await fetch("../../backend/APIS/apiGestion.php", {
                 method: "POST",
                 body: formData
             });
 
             const data = JSON.parse(await resp.text());
 
-            if (data.ok) {
+            if (data.exito) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Eliminado',
@@ -96,19 +173,19 @@ document.addEventListener("click", async (e) => {
 
         try {
             const formData = new FormData();
-            formData.append("accion", "modificar");
+            formData.append("accion", "contenedor.actualizar");
             formData.append("idCont", idCont);
             formData.append("zona", formValues.zona);
             formData.append("capacidad", formValues.capacidad);
 
-            const resp = await fetch("/SiGeRuCSS+/components/APIS/apiContenedor.php", {
+            const resp = await fetch("../../backend/APIS/apiGestion.php", {
                 method: "POST",
                 body: formData
             });
 
             const data = JSON.parse(await resp.text());
 
-            if (data.ok) {
+            if (data.exito) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Éxito',

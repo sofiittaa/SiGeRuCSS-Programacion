@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../themes/styleVistas.css?v=3">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Registrar camión</title>
+</head>
+<body class="bodyReg">
+    <h1 class="title">Registrar camión</h1>
+
+    <form class="form" id="formCamion" method="POST" action="">
+        <div class="form-group">
+            <label class="label" for="matricula">Matrícula:</label>
+            <input class="input" type="text" id="matricula" name="matricula" maxlength="10">
+        </div>
+
+        <div class="form-group">
+            <label class="label" for="capacidad">Capacidad:</label>
+            <input class="input" type="text" id="capacidad" name="capacidad" maxlength="10">
+        </div>
+
+        <input class="btn" type="submit" value="Registrar">
+    </form>
+
+    <a href="../camionVista/listarCamVista.php" class="btn-volver">Volver</a>
+
+    <script src="../../ajax/camion/registroCamion.js?v=3"></script>
+</body>
+</html>

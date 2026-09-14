@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../themes/styleVistas.css?v=3">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Registrar contenedor</title>
+</head>
+<body class="bodyReg">
+    <h1 class="title">Registrar contenedor</h1>
+
+    <form class="form" id="formCont" method="POST" action="">
+        <div class="form-group">
+            <label class="label" for="zona">Zona:</label>
+            <input class="input" type="text" id="zona" name="zona">
+        </div>
+
+        <div class="form-group">
+            <label class="label" for="capacidad">Capacidad:</label>
+            <input class="input" type="text" id="capacidad" name="capacidad">
+        </div>
+
+        <input class="btn" type="submit" value="Registrar">
+    </form>
+
+    <a href="../contenedorVista/listarContVista.php" class="btn-volver">Volver</a>
+
+    <script src="../../ajax/contenedor/registroContenedor.js?v=2"></script>
+</body>
+</html>

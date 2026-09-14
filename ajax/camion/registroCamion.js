@@ -1,4 +1,4 @@
-﻿document.getElementById("formCamion").addEventListener("submit", async (e) => {
+document.getElementById("formCamion").addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const msg = document.getElementById("msg");
@@ -17,11 +17,11 @@
         return;
     }
 
-    if (!/^[A-Za-z]{3}\d{4}$/.test(matricula)) {
+    if (!/^[A-Za-z]{3}\s?\d{4}$/.test(matricula)) {
         Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'La matricula debe tener 3 letras y 4 numeros',
+            text: 'La matricula debe tener 3 letras y 4 numeros (ej: ABH 5149)',
             timer: 1500,
             color: '#096d45',
             showConfirmButton: false,
@@ -43,9 +43,9 @@
 
     try {
         const formData = new FormData(e.target);
-        formData.append("accion", "crear");
+        formData.append("accion", "camion.crear");
 
-        const resp = await fetch("/SiGeRuCSS+/components/APIS/apiCamion.php", ({
+        const resp = await fetch("../../backend/APIS/apiGestion.php", ({
             method: "POST",
             body: formData
         }));
@@ -54,7 +54,7 @@
         console.log( texto);
         const data = JSON.parse(texto)
     
-        if (data.ok) {
+        if (data.exito) {
             e.target.reset();
             Swal.fire({
                 icon: 'success',
@@ -66,7 +66,7 @@
             }); 
 
         setTimeout(() => {
-            window.location.href = "/SiGeRuCSS+/components/vista/admin/panelAdmin.html";
+            window.location.href = "../admin/panelAdmin.php";
         }, 2000);
         } else {
             Swal.fire({

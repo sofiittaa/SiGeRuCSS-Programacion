@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../themes/styleVistas.css?v=3">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Registrar centro de acopio</title>
+</head>
+<body class="bodyReg">
+    <h1 class="title">Registrar centro de acopio</h1>
+
+    <form class="form" id="formCentro" method="POST" action="">
+        <div class="form-group">
+            <label class="label" for="RUTdes">RUT (máx. 9 dígitos):</label>
+            <input class="input" type="text" id="RUTdes" name="RUTdes" maxlength="9">
+        </div>
+
+        <div class="form-group">
+            <label class="label" for="nomDes">Nombre:</label>
+            <input class="input" type="text" id="nomDes" name="nomDes" maxlength="50">
+        </div>
+
+        <div class="form-group">
+            <label class="label" for="capDes">Capacidad:</label>
+            <input class="input" type="text" id="capDes" name="capDes" maxlength="10">
+        </div>
+
+        <div class="form-group">
+            <label class="label" for="horAperDes">Hora de apertura:</label>
+            <input class="input" type="time" id="horAperDes" name="horAperDes">
+        </div>
+
+        <div class="form-group">
+            <label class="label" for="horCierDes">Hora de cierre:</label>
+            <input class="input" type="time" id="horCierDes" name="horCierDes">
+        </div>
+
+        <div class="form-group">
+            <label class="label" for="zonaDes">Zona:</label>
+            <input class="input" type="text" id="zonaDes" name="zonaDes" maxlength="30">
+        </div>
+
+        <input class="btn" type="submit" value="Registrar">
+    </form>
+
+    <a href="../centroAcoVista/listarCen.php" class="btn-volver">Volver</a>
+
+    <script src="../../ajax/centro/registroCentro.js?v=3"></script>
+</body>
+</html>

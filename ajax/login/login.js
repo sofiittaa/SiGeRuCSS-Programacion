@@ -35,9 +35,9 @@ if (formLogin) {
 
     try {
         const formData = new FormData(e.target);
-        formData.append("accion", "login");
+        formData.append("accion", "auth.login");
 
-        const resp = await fetch("/SiGeRuCSS+/components/APIS/apiLogin.php", {
+        const resp = await fetch("../../backend/APIS/apiUsuario.php", {
             method: "POST",
             body: formData
         });
@@ -48,7 +48,7 @@ if (formLogin) {
 
         const data = await resp.json();
 
-        if (data.ok) {
+        if (data.exito) {
             sessionStorage.setItem('usuario_rol', data.rol);  
         Swal.fire({
             icon: 'success',
@@ -62,9 +62,9 @@ if (formLogin) {
         setTimeout(() => {
             
             if (data.rol === 'vecino') {
-                window.location.href = "/SiGeRuCSS+/components/vista/vecino/panelVecino.html";
+                window.location.href = "../vecino/panelVecino.php";
             } else {
-                window.location.href = "/SiGeRuCSS+/components/vista/admin/panelAdmin.html";
+                window.location.href = "../admin/panelAdmin.php";
             }
         }, 1500);
         } else {
@@ -113,18 +113,18 @@ if (btnLogout) {
 
         try {
             const formData = new FormData();
-            formData.append("accion", "logout");
+            formData.append("accion", "auth.logout");
 
-            const resp = await fetch("/SiGeRuCSS+/components/APIS/apiLogin.php", {
+            const resp = await fetch("../../backend/APIS/apiUsuario.php", {
                 method: "POST",
                 body: formData
             });
 
             const data = await resp.json();
 
-            if (data.ok) {
+            if (data.exito) {
                 sessionStorage.removeItem('usuario_rol');
-                window.location.href = "/SiGeRuCSS+/components/vista/usuarioVista/loginVista.html";
+                window.location.href = "../usuarioVista/loginVista.html";
             } else {
                 Swal.fire({
                     icon: 'error',

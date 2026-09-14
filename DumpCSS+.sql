@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `sigeru` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `sigeru`;
 -- MySQL dump 10.13  Distrib 8.0.43, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: sigeru
@@ -16,225 +18,132 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `adminmunicipal`
+-- Dumping data for table `camion`
 --
 
-DROP TABLE IF EXISTS `adminmunicipal`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `adminmunicipal` (
-  `cedula` int NOT NULL,
-  PRIMARY KEY (`cedula`),
-  CONSTRAINT `fk_admin_empleado` FOREIGN KEY (`cedula`) REFERENCES `empleado` (`cedula`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `camion` WRITE;
+/*!40000 ALTER TABLE `camion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `camion` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `camion`
+-- Dumping data for table `centroacopio`
 --
 
-DROP TABLE IF EXISTS `camion`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `camion` (
-  `matricula` varchar(10) NOT NULL,
-  `capacidad` varchar(10) DEFAULT NULL,
-  `idCuad` int DEFAULT NULL,
-  `idRuta` int DEFAULT NULL,
-  PRIMARY KEY (`matricula`),
-  UNIQUE KEY `idCuad` (`idCuad`),
-  KEY `fk_camion_ruta` (`idRuta`),
-  CONSTRAINT `fk_camion_cuadrilla` FOREIGN KEY (`idCuad`) REFERENCES `cuadrillareco` (`idCuad`),
-  CONSTRAINT `fk_camion_ruta` FOREIGN KEY (`idRuta`) REFERENCES `rutas` (`idRuta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `centroacopio` WRITE;
+/*!40000 ALTER TABLE `centroacopio` DISABLE KEYS */;
+/*!40000 ALTER TABLE `centroacopio` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `centroacopio`
+-- Dumping data for table `contenedor`
 --
 
-DROP TABLE IF EXISTS `centroacopio`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `centroacopio` (
-  `RUTdes` int NOT NULL,
-  PRIMARY KEY (`RUTdes`),
-  CONSTRAINT `fk_centroAcopio_destino` FOREIGN KEY (`RUTdes`) REFERENCES `destino` (`RUTdes`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `contenedor` WRITE;
+/*!40000 ALTER TABLE `contenedor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contenedor` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `contenedor`
+-- Dumping data for table `cuadrillareco`
 --
 
-DROP TABLE IF EXISTS `contenedor`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `contenedor` (
-  `idCont` int NOT NULL AUTO_INCREMENT,
-  `zona` varchar(100) DEFAULT NULL,
-  `capacidad` varchar(10) DEFAULT NULL,
-  `idRuta` int DEFAULT NULL,
-  `idEst` int DEFAULT NULL,
-  PRIMARY KEY (`idCont`),
-  KEY `fk_contenedor_ruta` (`idRuta`),
-  KEY `fk_contenedor_estado` (`idEst`),
-  CONSTRAINT `fk_contenedor_estado` FOREIGN KEY (`idEst`) REFERENCES `estado` (`idEst`),
-  CONSTRAINT `fk_contenedor_ruta` FOREIGN KEY (`idRuta`) REFERENCES `rutas` (`idRuta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `cuadrillareco` WRITE;
+/*!40000 ALTER TABLE `cuadrillareco` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cuadrillareco` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `cuadrillareco`
+-- Dumping data for table `destino`
 --
 
-DROP TABLE IF EXISTS `cuadrillareco`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cuadrillareco` (
-  `idCuad` int NOT NULL AUTO_INCREMENT,
-  `zonaCuad` varchar(30) DEFAULT NULL,
-  `horaCuad` time DEFAULT NULL,
-  PRIMARY KEY (`idCuad`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `destino` WRITE;
+/*!40000 ALTER TABLE `destino` DISABLE KEYS */;
+/*!40000 ALTER TABLE `destino` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `destino`
+-- Dumping data for table `empleado`
 --
 
-DROP TABLE IF EXISTS `destino`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `destino` (
-  `RUTdes` int NOT NULL,
-  `nomDes` varchar(50) DEFAULT NULL,
-  `capDes` varchar(10) DEFAULT NULL,
-  `horAperDes` time DEFAULT NULL,
-  `horCierDes` time DEFAULT NULL,
-  `zonaDes` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`RUTdes`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `empleado` WRITE;
+/*!40000 ALTER TABLE `empleado` DISABLE KEYS */;
+/*!40000 ALTER TABLE `empleado` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `empleado`
+-- Dumping data for table `estado`
 --
 
-DROP TABLE IF EXISTS `empleado`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `empleado` (
-  `cedula` int NOT NULL,
-  `idCuad` int DEFAULT NULL,
-  PRIMARY KEY (`cedula`),
-  KEY `fk_empleado_cuadrilla` (`idCuad`),
-  CONSTRAINT `fk_empleado_cuadrilla` FOREIGN KEY (`idCuad`) REFERENCES `cuadrillareco` (`idCuad`),
-  CONSTRAINT `fk_empleado_usuario` FOREIGN KEY (`cedula`) REFERENCES `usuario` (`cedula`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `estado` WRITE;
+/*!40000 ALTER TABLE `estado` DISABLE KEYS */;
+/*!40000 ALTER TABLE `estado` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `estado`
+-- Dumping data for table `incidencia`
 --
 
-DROP TABLE IF EXISTS `estado`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `estado` (
-  `idEst` int NOT NULL AUTO_INCREMENT,
-  `tipoEst` varchar(30) DEFAULT NULL,
-  `nomEst` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`idEst`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `incidencia` WRITE;
+/*!40000 ALTER TABLE `incidencia` DISABLE KEYS */;
+/*!40000 ALTER TABLE `incidencia` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `incidencia`
+-- Dumping data for table `maquinariabasica`
 --
 
-DROP TABLE IF EXISTS `incidencia`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `incidencia` (
-  `idInci` int NOT NULL AUTO_INCREMENT,
-  `fchaCreaInci` date DEFAULT NULL,
-  `fchaCierInci` date DEFAULT NULL,
-  `estInci` varchar(15) DEFAULT NULL,
-  `descInci` varchar(120) DEFAULT NULL,
-  `cedula` int DEFAULT NULL,
-  `idCont` int DEFAULT NULL,
-  PRIMARY KEY (`idInci`),
-  KEY `fk_incidencia_usuario` (`cedula`),
-  KEY `fk_incidencia_contenedor` (`idCont`),
-  CONSTRAINT `fk_incidencia_contenedor` FOREIGN KEY (`idCont`) REFERENCES `contenedor` (`idCont`),
-  CONSTRAINT `fk_incidencia_usuario` FOREIGN KEY (`cedula`) REFERENCES `usuario` (`cedula`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `maquinariabasica` WRITE;
+/*!40000 ALTER TABLE `maquinariabasica` DISABLE KEYS */;
+INSERT INTO `maquinariabasica` VALUES ('Compactadora010509','Compactadora','101570511012','BC672RB-2','Bomag',2024);
+/*!40000 ALTER TABLE `maquinariabasica` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `rutas`
+-- Dumping data for table `rutas`
 --
 
-DROP TABLE IF EXISTS `rutas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `rutas` (
-  `idRuta` int NOT NULL AUTO_INCREMENT,
-  `RUTdes` int DEFAULT NULL,
-  `zonaRuta` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`idRuta`),
-  KEY `fk_ruta_destino` (`RUTdes`),
-  CONSTRAINT `fk_ruta_destino` FOREIGN KEY (`RUTdes`) REFERENCES `destino` (`RUTdes`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `rutas` WRITE;
+/*!40000 ALTER TABLE `rutas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `rutas` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `usuario`
+-- Dumping data for table `usuario`
 --
 
-DROP TABLE IF EXISTS `usuario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuario` (
-  `cedula` int NOT NULL,
-  `nombre` varchar(50) DEFAULT NULL,
-  `apellido` varchar(50) DEFAULT NULL,
-  `zonaUsu` varchar(30) DEFAULT NULL,
-  `contrasena` varchar(100) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`cedula`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (0,'Admin','Municipal','$2y$10$ldDbQnjVGVYOckrGsVwfXudXYagS3KsIuZVA5347kqH/w7z.CVV86','adminsigeru@gmail.com','admin'),(34891567,'Marta','Abelenda','$2y$10$Ox/Op1pP2i10wNpj.r4acu6tmY4PtvhD5/MvH0pFotx65DO3ZzW9O','geraby@gmail.com','vecino'),(53402673,'Valentina','Gallo',' $2y$10$Sz.ufao4zbQ8l.96.kBK/uZr3e9lvjAv4qcCP6.HDDuXGQEg40s.m','vale0306@gmail.com','empleado');
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `vecino`
+-- Dumping data for table `utiliza`
 --
 
-DROP TABLE IF EXISTS `vecino`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `vecino` (
-  `cedula` int NOT NULL,
-  PRIMARY KEY (`cedula`),
-  CONSTRAINT `fk_vecino_usuario` FOREIGN KEY (`cedula`) REFERENCES `usuario` (`cedula`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `utiliza` WRITE;
+/*!40000 ALTER TABLE `utiliza` DISABLE KEYS */;
+/*!40000 ALTER TABLE `utiliza` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `vertedero`
+-- Dumping data for table `vecino`
 --
 
-DROP TABLE IF EXISTS `vertedero`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `vertedero` (
-  `RUTdes` int NOT NULL,
-  PRIMARY KEY (`RUTdes`),
-  CONSTRAINT `fk_vertedero_destino` FOREIGN KEY (`RUTdes`) REFERENCES `destino` (`RUTdes`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `vecino` WRITE;
+/*!40000 ALTER TABLE `vecino` DISABLE KEYS */;
+/*!40000 ALTER TABLE `vecino` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `vertedero`
+--
+
+LOCK TABLES `vertedero` WRITE;
+/*!40000 ALTER TABLE `vertedero` DISABLE KEYS */;
+/*!40000 ALTER TABLE `vertedero` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -245,4 +154,4 @@ CREATE TABLE `vertedero` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-07-26 21:48:05
+-- Dump completed on 2026-09-14 18:45:10
